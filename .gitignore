@@ -1,0 +1,11 @@
+.idea/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+artifacts/
+data/
+report_rendered/
+report_pdf_preview/
+replay_pid*.log
+*.tmp
+*.bak
