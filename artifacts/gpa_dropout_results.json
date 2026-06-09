@@ -1,0 +1,113 @@
+{
+  "dataset": "Student Dropout Prediction Dataset",
+  "data_file": "student_dropout_dataset_v3.csv",
+  "rows": 10000,
+  "target": "Dropout binary classification and numeric GPA regression",
+  "classes": {
+    "0": "Dropout: No",
+    "1": "Dropout: Yes"
+  },
+  "dropped_columns": [
+    "Student_ID",
+    "GPA",
+    "CGPA",
+    "Semester_GPA",
+    "Dropout",
+    "dropout_binary"
+  ],
+  "feature_columns": [
+    "Age",
+    "Gender",
+    "Family_Income",
+    "Internet_Access",
+    "Study_Hours_per_Day",
+    "Attendance_Rate",
+    "Assignment_Delay_Days",
+    "Travel_Time_Minutes",
+    "Part_Time_Job",
+    "Scholarship",
+    "Stress_Index",
+    "Semester",
+    "Department",
+    "Parental_Education"
+  ],
+  "classification_cross_validation": {
+    "logistic_regression": {
+      "accuracy": 0.6604,
+      "precision": 0.3764,
+      "recall": 0.655,
+      "f1": 0.4763,
+      "avg_threshold": 0.502
+    },
+    "random_forest": {
+      "accuracy": 0.6476,
+      "precision": 0.3607,
+      "recall": 0.6406,
+      "f1": 0.4612,
+      "avg_threshold": 0.238
+    },
+    "xgboost": {
+      "accuracy": 0.6643,
+      "precision": 0.38,
+      "recall": 0.6151,
+      "f1": 0.4638,
+      "avg_threshold": 0.244
+    }
+  },
+  "best_classifier": "logistic_regression",
+  "test_classification_metrics": {
+    "threshold": 0.502,
+    "accuracy": 0.6655,
+    "precision": 0.3775,
+    "recall": 0.6476,
+    "f1": 0.4769,
+    "confusion_matrix": [
+      [
+        1026,
+        503
+      ],
+      [
+        166,
+        305
+      ]
+    ],
+    "classification_report": {
+      "Dropout: No": {
+        "precision": 0.860738255033557,
+        "recall": 0.671026814911707,
+        "f1-score": 0.7541345093715546,
+        "support": 1529.0
+      },
+      "Dropout: Yes": {
+        "precision": 0.3774752475247525,
+        "recall": 0.6475583864118896,
+        "f1-score": 0.4769351055512119,
+        "support": 471.0
+      },
+      "accuracy": 0.6655,
+      "macro avg": {
+        "precision": 0.6191067512791548,
+        "recall": 0.6592926006617983,
+        "f1-score": 0.6155348074613832,
+        "support": 2000.0
+      },
+      "weighted avg": {
+        "precision": 0.7469298167652336,
+        "recall": 0.6655,
+        "f1-score": 0.6888540497718638,
+        "support": 2000.0
+      }
+    }
+  },
+  "regression_results": {
+    "random_forest_regressor": {
+      "mae": 0.7787,
+      "r2": 0.1948
+    },
+    "xgboost_regressor": {
+      "mae": 0.7745,
+      "r2": 0.2063
+    }
+  },
+  "best_regressor": "xgboost_regressor"
+}

@@ -326,7 +326,30 @@ def train_models():
     }
 
 
-STATE = train_models()
+def load_or_train_models():
+    raw_df, df, X, y_class, y_reg, drop_columns = load_and_prepare_data()
+    if CLASS_MODEL_PATH.exists() and REG_MODEL_PATH.exists() and RESULTS_PATH.exists():
+        with CLASS_MODEL_PATH.open("rb") as f:
+            best_classifier = pickle.load(f)
+        with REG_MODEL_PATH.open("rb") as f:
+            best_regressor = pickle.load(f)
+        with RESULTS_PATH.open("r", encoding="utf-8") as f:
+            results = json.load(f)
+        best_threshold = float(results["test_classification_metrics"]["threshold"])
+        return {
+            "raw_df": raw_df,
+            "df": df,
+            "X": X,
+            "best_classifier": best_classifier,
+            "best_regressor": best_regressor,
+            "best_threshold": best_threshold,
+            "results": results,
+        }
+
+    return train_models()
+
+
+STATE = load_or_train_models()
 X = STATE["X"]
 best_classifier = STATE["best_classifier"]
 best_regressor = STATE["best_regressor"]
