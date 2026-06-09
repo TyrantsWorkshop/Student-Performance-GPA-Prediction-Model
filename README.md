@@ -1,4 +1,6 @@
-# Student GPA and Dropout Risk Predictor
+# Student Performance GPA Prediction Model
+
+## Student GPA and Dropout Risk Predictor
 
 This project is a Flask web app that predicts:
 
